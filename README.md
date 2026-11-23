@@ -1,8 +1,18 @@
-DEV-01 — Tenant Isolation Demo
-This demo verifies that Business A can read its own orders and that Business B’s orders stay private and unchanged when Business A tries to access them.
+## DEV-01 - Order Isolation with PostgreSQL RLS
 
-Run all three checks using a Business A account. Start with two existing orders: A-101 belongs to Business A, and B-201 belongs to Business B.
-Check	Expected result
-Read order A-101.	The query returns exactly one order, A-101.
-Read order B-201.	The query returns zero orders.
-Attempt to update order B-201.	Zero records are changed.
+Verify that PostgreSQL row-level security limits order access to the active business when queries run under the SJ Sathi application role.
+
+### Test setup
+
+Use two sample orders in a test database. Business A owns `A-101`, and Business B owns `B-201`. As Business B, read `B-201` and record its status before running the checks.
+
+### Acceptance criteria
+
+| Tenant | Check | Expected result |
+| --- | --- | --- |
+| Business A | Read `A-101` by order ID | Exactly one row is returned. |
+| Business A | Read `B-201` by order ID | No rows are returned. |
+| Business A | Set `B-201` to a different status by order ID | Zero rows are updated. |
+| Business B | Read `B-201` after the update attempt | Exactly one row is returned with its original status. |
+
+Filter by order ID only for the cross-tenant checks so the database policy determines which rows are accessible.
