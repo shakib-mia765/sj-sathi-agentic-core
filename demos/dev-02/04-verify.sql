@@ -15,17 +15,14 @@ BEGIN
 END;
 $$;
 
--- Simulate switching the reader to the new columns.
 SELECT customer_id, first_name, last_name
 FROM public.customers
 ORDER BY customer_id;
 
--- Simulate an older application updating a name during the rollout.
 UPDATE public.customers
 SET customer_name = 'Amina Sultana'
 WHERE customer_id = 1;
 
--- Confirm the new reader sees the change and the old reader sees the same name.
 DO $$
 BEGIN
     IF NOT EXISTS (
