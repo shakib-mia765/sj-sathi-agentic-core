@@ -9,7 +9,6 @@ INSERT INTO public.orders (order_id, tenant_id, status)
 VALUES
     ('A-101', 'business_a', 'pending'),
     ('B-201', 'business_b', 'confirmed');
--- A PostgreSQL role can already exist from another demo database.
 DO $$
 BEGIN
     IF NOT EXISTS (
