@@ -43,5 +43,4 @@ SELECT customer_name AS old_read,
 FROM public.customers
 WHERE customer_id = 1;
 
--- Discard the test update.
 ROLLBACK;
