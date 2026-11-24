@@ -1,5 +1,4 @@
 BEGIN;
-
 CREATE TABLE IF NOT EXISTS public.workflow_templates (
     prompt_id text PRIMARY KEY,
     segment_tag text NOT NULL,
