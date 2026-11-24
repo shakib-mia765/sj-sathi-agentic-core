@@ -1,7 +1,5 @@
 BEGIN;
-
 SET LOCAL lock_timeout = '2s';
-
 ALTER TABLE public.customers
     ADD COLUMN first_name text,
     ADD COLUMN last_name text;
