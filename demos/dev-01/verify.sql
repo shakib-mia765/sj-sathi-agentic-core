@@ -1,4 +1,3 @@
--- Run as postgres after setup. Queries use the restricted demo role.
 BEGIN;
 SET LOCAL ROLE sj_sathi_dev01_app;
 -- Baseline: B-201 exists and its status is confirmed.
