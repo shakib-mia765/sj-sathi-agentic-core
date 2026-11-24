@@ -1,6 +1,4 @@
 BEGIN;
-
--- Check that all existing rows are ready for the new read path.
 DO $$
 BEGIN
     IF EXISTS (
