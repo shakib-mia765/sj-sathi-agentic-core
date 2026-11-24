@@ -1,6 +1,4 @@
--- DEV-03: Two deliveries of the same payment event should create one credit.
 BEGIN;
-
 CREATE TEMP TABLE demo_ledger (
     event_id text PRIMARY KEY,
     credit_minor integer NOT NULL CHECK (credit_minor > 0)
