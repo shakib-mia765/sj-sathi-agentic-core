@@ -1,4 +1,4 @@
--- Run once in a fresh local test database as postgres.
+
 BEGIN;
 CREATE TABLE public.orders (
     order_id text PRIMARY KEY,
